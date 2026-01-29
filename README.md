@@ -7,3 +7,4 @@ Repository for the IT 359 Group Project led by Dylan Voss and Grant Gollinger.
 
 ### Full Project Idea
 - Section for the project idea.
+
