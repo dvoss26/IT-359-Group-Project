@@ -67,14 +67,6 @@ The tool follows a standard penetration testing reconnaissance workflow:
 
 ---
 
-## Ethical Considerations
-
-This project was conducted strictly for educational purposes. All scans and testing were performed only on systems owned by the project members or systems where explicit authorization was granted. No public, production, or unauthorized networks were scanned.
-
-The project does not perform exploitation or active attacks and is limited to reconnaissance and enumeration techniques commonly used in the early phases of a penetration test.
-
----
-
 ## Project Execution Plan
 
 The following steps outline how this project will be completed from start to finish:
