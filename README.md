@@ -15,6 +15,14 @@ The goal of this project is to demonstrate how programming can be combined with 
 
 ---
 
+## Ethical Considerations
+
+This project was conducted strictly for educational purposes. All scans and testing were performed only on systems owned by the project members or systems where explicit authorization was granted. No public, production, or unauthorized networks were scanned.
+
+The project does not perform exploitation or active attacks and is limited to reconnaissance and enumeration techniques commonly used in the early phases of a penetration test.
+
+---
+
 ## Project Objectives
 
 The primary objectives of this project are:
@@ -64,5 +72,32 @@ The tool follows a standard penetration testing reconnaissance workflow:
 This project was conducted strictly for educational purposes. All scans and testing were performed only on systems owned by the project members or systems where explicit authorization was granted. No public, production, or unauthorized networks were scanned.
 
 The project does not perform exploitation or active attacks and is limited to reconnaissance and enumeration techniques commonly used in the early phases of a penetration test.
+
+---
+
+## Project Execution Plan
+
+The following steps outline how this project will be completed from start to finish:
+
+1. **Environment Setup**  
+   A Linux-based testing environment will be prepared using virtual machines or a private lab network. Required tools such as Nmap will be installed and verified to ensure proper functionality.
+
+2. **Script Development**  
+   A Bash script will be created using a text editor (e.g., nano) to automate the network reconnaissance process. The script will accept a target IP address or subnet as input and execute scanning commands in sequence.
+
+3. **Network Scanning**  
+   The script will perform host discovery and port scanning against the authorized target to identify live hosts, open ports, and running services.
+
+4. **Result Parsing and Analysis**  
+   Scan output will be processed to extract relevant information such as open ports and service versions. Basic logic will be applied to flag common security risks based on discovered services.
+
+5. **Report Generation**  
+   The script will generate a readable output file summarizing scan results, identified risks, and recommended mitigation steps.
+
+6. **Testing and Validation**  
+   The script will be tested multiple times in the lab environment to ensure consistent results and proper handling of different targets.
+
+7. **Documentation and Submission**  
+   Final documentation will be completed in the README file, including usage instructions, methodology, ethical considerations, and sample output. The finished project will be submitted as a GitHub repository link.
 
 ---
