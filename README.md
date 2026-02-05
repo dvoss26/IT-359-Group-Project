@@ -28,7 +28,7 @@ The primary objectives of this project are:
 
 ## Tools & Technologies Used
 
-- **Programming Language:** Bash
+- **Programming Language:** Bash Scripting
 - **Primary Security Tool:** Nmap
 - **Operating System:** Linux
 - **Additional Utilities:** grep, awk, sed
@@ -66,14 +66,3 @@ This project was conducted strictly for educational purposes. All scans and test
 The project does not perform exploitation or active attacks and is limited to reconnaissance and enumeration techniques commonly used in the early phases of a penetration test.
 
 ---
-
-## Usage Instructions
-
-1. Ensure required tools are installed:
-   - Nmap
-   - Bash or Python environment
-
-2. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/network-recon-tool.git
-   cd network-recon-tool
