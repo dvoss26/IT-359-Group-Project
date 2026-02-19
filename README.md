@@ -92,4 +92,12 @@ The following steps outline how this project will be completed from start to fin
 7. **Documentation and Submission**  
    Final documentation will be completed in the README file, including usage instructions, methodology, ethical considerations, and sample output. The finished project will be submitted as a GitHub repository link.
 
+
+## Artificial Intelligence Implementation
+Our current idea for the implementation:
+   **Test each default models to find the one that best works around our project description**
+   - We can either follow route of using one model for whole project or multiple models for different steps (One for scripting, one for scanning output, etc)
+   **Use the desired models on these specific steps**
+
+     
 ---
