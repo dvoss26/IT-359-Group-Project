@@ -7,7 +7,8 @@ Repository for the IT 359 Group Project led by Dylan Voss and Grant Gollinger.
 
 ---
 
-**##Live Demo**
+##Live Demo
+
 Add live demo youtube link here:
 
 
