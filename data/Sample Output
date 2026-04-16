@@ -20,6 +20,73 @@ Using our tool will quickly point out port 23 being open and vulnerable, with th
 2. Services being ran on those open ports
 3. Versions of the services used
 
-Below is the output of our tool being ran on the Meow target IP
+Below is the output of our tool being ran on the Meow target IP:
+
+
+============================================================
+  IT-359 NETWORK RECONNAISSANCE & VULNERABILITY REPORT
+  Generated: Thu Apr 16 02:27:23 PM CDT 2026
+  Target:    10.129.1.17
+  Scan Mode: single (single host, ping disabled (-Pn))
+  Authors:   Dylan Voss & Grant Gollinger
+============================================================
+
+────────────────────────────────────────────────────────────
+ SECTION 1: LIVE HOSTS
+────────────────────────────────────────────────────────────
+Total live hosts found: 1
+
+10.129.1.17
+
+────────────────────────────────────────────────────────────
+ SECTION 2: SERVICE ENUMERATION
+────────────────────────────────────────────────────────────
+# Nmap 7.94SVN scan initiated Thu Apr 16 14:27:03 2026 as: nmap -sV -sC -Pn -iL ./reports/20260416_142654_10.129.1.17/hosts_with_open_ports.txt -oX ./reports/20260416_142654_10.129.1.17/services.xml -oN ./reports/20260416_142654_10.129.1.17/services.txt
+Failed to resolve "Nmap".
+Failed to resolve "Nmap".
+Nmap scan report for 10.129.1.17
+Host is up (0.0094s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+23/tcp open  telnet  Linux telnetd
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Failed to resolve "Nmap".
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Apr 16 14:27:23 2026 -- 1 IP address (1 host up) scanned in 20.52 seconds
+
+────────────────────────────────────────────────────────────
+ SECTION 3: IDENTIFIED RISKS
+────────────────────────────────────────────────────────────
+[RISK] Port 23 — Telnet — Unencrypted remote access, credential sniffing risk
+Affected: 10.129.1.17
+---
+
+────────────────────────────────────────────────────────────
+ SECTION 4: MITIGATION RECOMMENDATIONS
+────────────────────────────────────────────────────────────
+General recommendations based on findings:
+
+  • Disable or firewall any unencrypted services (FTP, Telnet, rsh, rlogin)
+  • Replace unencrypted protocols with secure alternatives (SFTP, SSH)
+  • Ensure all database services (MySQL, MSSQL, MongoDB, Redis) require authentication
+    and are not exposed to the network unnecessarily
+  • Apply latest security patches for SMB, RDP, and Windows RPC services
+  • Review and harden SNMP community strings or disable SNMP if unused
+  • Audit NFS and Samba shares for unnecessary public access
+  • Consider placing all non-essential services behind a firewall or VPN
+  • Review TLS/SSL configurations on HTTPS services for weak ciphers
+
+────────────────────────────────────────────────────────────
+ SECTION 5: RAW SCAN FILES
+────────────────────────────────────────────────────────────
+  Raw XML scan data: ./reports/20260416_142654_10.129.1.17/raw_scan.xml
+  Service scan:      ./reports/20260416_142654_10.129.1.17/services.xml
+  Risk log:          ./reports/20260416_142654_10.129.1.17/risks.txt
+
+============================================================
+  END OF REPORT
+============================================================
+
 
 ---
