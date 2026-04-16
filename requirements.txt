@@ -1,1 +1,22 @@
-List all dependencies required for project.
+# IT-359 Group Project — System Dependencies
+# This project is a Bash-based tool. There are no Python/Node packages to install.
+# All dependencies are system-level tools available via apt on Debian/Ubuntu.
+ 
+# ─── Required Tools ────────────────────────────────────────
+# Install all at once with:
+#   sudo apt update && sudo apt install -y nmap
+ 
+nmap >= 7.80        # Network scanning and service enumeration (core dependency)
+bash >= 5.0         # Shell interpreter (pre-installed on all Linux systems)
+grep                # Text search utility (pre-installed)
+awk                 # Text processing utility (pre-installed)
+sed                 # Stream editor utility (pre-installed)
+ 
+# ─── Optional (for AI integration phase) ───────────────────
+# curl               # For API calls to AI models
+# jq                 # For parsing JSON API responses
+#   sudo apt install -y curl jq
+ 
+# ─── Operating System ──────────────────────────────────────
+# Tested on: Ubuntu 22.04 LTS, Ubuntu 24.04 LTS (Kali Linux also supported)
+# Not supported on: Windows (use WSL2 or a Linux VM)
