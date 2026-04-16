@@ -33,7 +33,7 @@ Below is the output of our tool being ran on the Meow target IP:
   Generated: Thu Apr 16 02:27:23 PM CDT 2026
   Target:    10.129.1.17
   Scan Mode: single (single host, ping disabled (-Pn))
-  Authors:    Dylan Voss & Grant Gollinger
+  Authors:   Dylan Voss & Grant Gollinger
 ============================================================
 
 ────────────────────────────────────────────────────────────
@@ -52,7 +52,7 @@ Failed to resolve "Nmap".
 Nmap scan report for 10.129.1.17
 Host is up (0.0094s latency).
 Not shown: 999 closed tcp ports (reset)
-PORT    STATE SERVICE VERSION
+PORT   STATE SERVICE VERSION
 23/tcp open  telnet  Linux telnetd
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
@@ -65,6 +65,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 ────────────────────────────────────────────────────────────
 [RISK] Port 23 — Telnet — Unencrypted remote access, credential sniffing risk
 Affected: 10.129.1.17
+---
 
 ────────────────────────────────────────────────────────────
  SECTION 4: MITIGATION RECOMMENDATIONS
