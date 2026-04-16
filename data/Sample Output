@@ -1,20 +1,24 @@
-# Sample Output
+Sample Output
+=============
 
 ---
 
-## Overview
+Overview
+--------
 
 We have decided to do out bulk of out project with the help from Hack The Box Machines. Using a target machine from one of the machines allows us safely and properly test and show off our tool.
 
 ---
 
-## Test Scenario
+Test Scenario
+-------------
 
 We chose to target the first machine in the Starting Point Tier 0, Meow. This easy machine focuses on the us of exploiting Telnet. Using a regular nmap scan will show port 23 with Telnet open.
 
 ---
 
-## Output
+Output
+------
 
 Using our tool will quickly point out port 23 being open and vulnerable, with the addition of multiple nmap scans being ran to detect information like:
 
@@ -24,7 +28,6 @@ Using our tool will quickly point out port 23 being open and vulnerable, with th
 
 Below is the output of our tool being ran on the Meow target IP:
 
-```text
 ============================================================
   IT-359 NETWORK RECONNAISSANCE & VULNERABILITY REPORT
   Generated: Thu Apr 16 02:27:23 PM CDT 2026
@@ -54,7 +57,7 @@ PORT    STATE SERVICE VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Failed to resolve "Nmap".
-Service detection performed. Please report any incorrect results at [https://nmap.org/submit/](https://nmap.org/submit/) .
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 # Nmap done at Thu Apr 16 14:27:23 2026 -- 1 IP address (1 host up) scanned in 20.52 seconds
 
 ────────────────────────────────────────────────────────────
@@ -88,6 +91,3 @@ General recommendations based on findings:
 ============================================================
   END OF REPORT
 ============================================================
-
-
----
