@@ -104,9 +104,7 @@ The following steps outline how this project will be completed from start to fin
 1. Test each default models to find the one that best works around our project description**
    - We can either follow route of using one model for whole project or multiple models for different steps; For example, using gpt-oss:latest for scripting in step 2, gemma for output scanning for step 4, etc.
 
-2. Implement models we chose to work with into the steps we want their assisstanc with.**
-
- 
-*Not Finalized, but gives us a base plan to work around*
+2. Implement models we chose to work with into the steps we want their assisstanc with.
+***Not Finalized, but gives us a base plan to work around*
      
 ---
