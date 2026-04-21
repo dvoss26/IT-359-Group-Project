@@ -23,10 +23,10 @@ Output
 Using our tool will quickly point out port 23 being open and vulnerable, with the addition of multiple nmap scans being run to detect information like:
 
 1. Ports open
-2. Services being ran on those open ports
+2. Services being run on those open ports
 3. Versions of the services used
 
-Below is the output of our tool being ran on the Meow target IP:
+Below is the output of our tool being run on the Meow target IP:
 
 ============================================================
   IT-359 NETWORK RECONNAISSANCE & VULNERABILITY REPORT
