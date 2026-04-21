@@ -6,14 +6,14 @@ Sample Output
 Overview
 --------
 
-We have decided to do out bulk of out project with the help from Hack The Box Machines. Using a target machine from one of the machines allows us safely and properly test and show off our tool.
+We have decided to do the bulk of our project with the help of Hack The Box Machines. Using a target machine from one of the machines allows us to safely and properly test and show off our tool.
 
 ---
 
 Test Scenario
 -------------
 
-We chose to target the first machine in the Starting Point Tier 0, Meow. This easy machine focuses on the us of exploiting Telnet. Using a regular nmap scan will show port 23 with Telnet open.
+We chose to target the first machine in the Starting Point Tier 0, Meow. This easy machine focuses on the use of exploiting Telnet. Using a regular nmap scan will show port 23 with Telnet open.
 
 ---
 
