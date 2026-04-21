@@ -187,6 +187,7 @@ step3_service_enum() {
     echo -e "${BOLD}${CYAN}[STEP 3] Service Enumeration & OS Detection${RESET}"
 
     grep "open" "$REPORT_DIR/ports.gnmap" 2>/dev/null \
+        | grep -v "^#" \
         | awk '{print $2}' \
         | sort -u \
         > "$REPORT_DIR/hosts_with_open_ports.txt"
@@ -209,7 +210,7 @@ step3_service_enum() {
 
     # Extract OS detection results to a separate summary file
     if [ -f "$REPORT_DIR/services.txt" ]; then
-        grep -E "^OS:|^Running:|^OS details:|^OS CPE:" "$REPORT_DIR/services.txt" \
+        grep -E "^OS details:|^Running:|^Aggressive OS guesses:|^OS CPE:" "$REPORT_DIR/services.txt" \
             > "$REPORT_DIR/os_detection.txt" 2>/dev/null || true
 
         if [ -s "$REPORT_DIR/os_detection.txt" ]; then
