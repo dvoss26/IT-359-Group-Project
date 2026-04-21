@@ -20,7 +20,7 @@ We chose to target the first machine in the Starting Point Tier 0, Meow. This ea
 Output
 ------
 
-Using our tool will quickly point out port 23 being open and vulnerable, with the addition of multiple nmap scans being ran to detect information like:
+Using our tool will quickly point out port 23 being open and vulnerable, with the addition of multiple nmap scans being run to detect information like:
 
 1. Ports open
 2. Services being ran on those open ports
