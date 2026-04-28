@@ -1,0 +1,4 @@
+# Nmap 7.94SVN scan initiated Tue Apr 28 11:16:05 2026 as: nmap -sS -Pn -p- --open -T4 --min-rate 5000 -iL ./reports/20260428_111605_10.129.27.3/live_hosts.txt -oX ./reports/20260428_111605_10.129.27.3/raw_scan.xml -oG ./reports/20260428_111605_10.129.27.3/ports.gnmap
+Host: 10.129.27.3 ()	Status: Up
+Host: 10.129.27.3 ()	Ports: 21/open/tcp//ftp///, 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (65532)
+# Nmap done at Tue Apr 28 11:16:11 2026 -- 1 IP address (1 host up) scanned in 6.32 seconds

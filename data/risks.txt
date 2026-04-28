@@ -1,0 +1,6 @@
+[RISK] Port 80 — HTTP — Unencrypted web traffic
+Affected: 
+---
+[RISK] Port 21 — FTP — Unencrypted file transfer, credential sniffing risk
+Affected: 10.129.27.3
+---

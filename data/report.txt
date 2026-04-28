@@ -1,0 +1,354 @@
+============================================================
+  IT-359 NETWORK RECONNAISSANCE & VULNERABILITY REPORT
+  Generated: Tue Apr 28 11:18:56 AM CDT 2026
+  Target:    10.129.27.3
+  Scan Mode: single (single host, ping disabled (-Pn))
+  Authors:   Dylan Voss & Grant Gollinger
+============================================================
+
+────────────────────────────────────────────────────────────
+ SECTION 1: LIVE HOSTS
+────────────────────────────────────────────────────────────
+Total live hosts found: 1
+
+10.129.27.3
+
+────────────────────────────────────────────────────────────
+ SECTION 2: SERVICE ENUMERATION
+────────────────────────────────────────────────────────────
+# Nmap 7.94SVN scan initiated Tue Apr 28 11:16:11 2026 as: nmap -sV -sC -Pn -iL ./reports/20260428_111605_10.129.27.3/hosts_with_open_ports.txt -oX ./reports/20260428_111605_10.129.27.3/services.xml -oN ./reports/20260428_111605_10.129.27.3/services.txt
+Failed to resolve "Nmap".
+Failed to resolve "Nmap".
+Nmap scan report for 10.129.27.3
+Host is up (0.0089s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.3
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 fa:80:a9:b2:ca:3b:88:69:a4:28:9e:39:0d:27:d5:75 (RSA)
+|   256 96:d8:f8:e3:e8:f7:71:36:c5:49:d5:9d:b6:a4:c9:0c (ECDSA)
+|_  256 3f:d0:ff:91:eb:3b:f6:e1:9f:2e:8d:de:b3:de:b2:18 (ED25519)
+80/tcp open  http    gunicorn
+|_http-server-header: gunicorn
+|_http-title: Security Dashboard
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     HTTP/1.0 404 NOT FOUND
+|     Server: gunicorn
+|     Date: Tue, 28 Apr 2026 16:16:13 GMT
+|     Connection: close
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 232
+|     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+|     <title>404 Not Found</title>
+|     <h1>Not Found</h1>
+|     <p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     Server: gunicorn
+|     Date: Tue, 28 Apr 2026 16:16:08 GMT
+|     Connection: close
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 19386
+|     <!DOCTYPE html>
+|     <html class="no-js" lang="en">
+|     <head>
+|     <meta charset="utf-8">
+|     <meta http-equiv="x-ua-compatible" content="ie=edge">
+|     <title>Security Dashboard</title>
+|     <meta name="viewport" content="width=device-width, initial-scale=1">
+|     <link rel="shortcut icon" type="image/png" href="/static/images/icon/favicon.ico">
+|     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+|     <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+|     <link rel="stylesheet" href="/static/css/themify-icons.css">
+|     <link rel="stylesheet" href="/static/css/metisMenu.css">
+|     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+|     <link rel="stylesheet" href="/static/css/slicknav.min.css">
+|     <!-- amchar
+|   HTTPOptions: 
+|     HTTP/1.0 200 OK
+|     Server: gunicorn
+|     Date: Tue, 28 Apr 2026 16:16:08 GMT
+|     Connection: close
+|     Content-Type: text/html; charset=utf-8
+|     Allow: GET, HEAD, OPTIONS
+|     Content-Length: 0
+|   RTSPRequest: 
+|     HTTP/1.1 400 Bad Request
+|     Connection: close
+|     Content-Type: text/html
+|     Content-Length: 196
+|     <html>
+|     <head>
+|     <title>Bad Request</title>
+|     </head>
+|     <body>
+|     <h1><p>Bad Request</p></h1>
+|     Invalid HTTP Version &#x27;Invalid HTTP Version: &#x27;RTSP/1.0&#x27;&#x27;
+|     </body>
+|_    </html>
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port80-TCP:V=7.94SVN%I=7%D=4/28%Time=69F0DD52%P=x86_64-pc-linux-gnu%r(G
+SF:etRequest,4C56,"HTTP/1\.0\x20200\x20OK\r\nServer:\x20gunicorn\r\nDate:\
+SF:x20Tue,\x2028\x20Apr\x202026\x2016:16:08\x20GMT\r\nConnection:\x20close
+SF:\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nContent-Length:\x20
+SF:19386\r\n\r\n<!DOCTYPE\x20html>\n<html\x20class=\"no-js\"\x20lang=\"en\
+SF:">\n\n<head>\n\x20\x20\x20\x20<meta\x20charset=\"utf-8\">\n\x20\x20\x20
+SF:\x20<meta\x20http-equiv=\"x-ua-compatible\"\x20content=\"ie=edge\">\n\x
+SF:20\x20\x20\x20<title>Security\x20Dashboard</title>\n\x20\x20\x20\x20<me
+SF:ta\x20name=\"viewport\"\x20content=\"width=device-width,\x20initial-sca
+SF:le=1\">\n\x20\x20\x20\x20<link\x20rel=\"shortcut\x20icon\"\x20type=\"im
+SF:age/png\"\x20href=\"/static/images/icon/favicon\.ico\">\n\x20\x20\x20\x
+SF:20<link\x20rel=\"stylesheet\"\x20href=\"/static/css/bootstrap\.min\.css
+SF:\">\n\x20\x20\x20\x20<link\x20rel=\"stylesheet\"\x20href=\"/static/css/
+SF:font-awesome\.min\.css\">\n\x20\x20\x20\x20<link\x20rel=\"stylesheet\"\
+SF:x20href=\"/static/css/themify-icons\.css\">\n\x20\x20\x20\x20<link\x20r
+SF:el=\"stylesheet\"\x20href=\"/static/css/metisMenu\.css\">\n\x20\x20\x20
+SF:\x20<link\x20rel=\"stylesheet\"\x20href=\"/static/css/owl\.carousel\.mi
+SF:n\.css\">\n\x20\x20\x20\x20<link\x20rel=\"stylesheet\"\x20href=\"/stati
+SF:c/css/slicknav\.min\.css\">\n\x20\x20\x20\x20<!--\x20amchar")%r(HTTPOpt
+SF:ions,B3,"HTTP/1\.0\x20200\x20OK\r\nServer:\x20gunicorn\r\nDate:\x20Tue,
+SF:\x2028\x20Apr\x202026\x2016:16:08\x20GMT\r\nConnection:\x20close\r\nCon
+SF:tent-Type:\x20text/html;\x20charset=utf-8\r\nAllow:\x20GET,\x20HEAD,\x2
+SF:0OPTIONS\r\nContent-Length:\x200\r\n\r\n")%r(RTSPRequest,121,"HTTP/1\.1
+SF:\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\nContent-Type:\x20t
+SF:ext/html\r\nContent-Length:\x20196\r\n\r\n<html>\n\x20\x20<head>\n\x20\
+SF:x20\x20\x20<title>Bad\x20Request</title>\n\x20\x20</head>\n\x20\x20<bod
+SF:y>\n\x20\x20\x20\x20<h1><p>Bad\x20Request</p></h1>\n\x20\x20\x20\x20Inv
+SF:alid\x20HTTP\x20Version\x20&#x27;Invalid\x20HTTP\x20Version:\x20&#x27;R
+SF:TSP/1\.0&#x27;&#x27;\n\x20\x20</body>\n</html>\n")%r(FourOhFourRequest,
+SF:189,"HTTP/1\.0\x20404\x20NOT\x20FOUND\r\nServer:\x20gunicorn\r\nDate:\x
+SF:20Tue,\x2028\x20Apr\x202026\x2016:16:13\x20GMT\r\nConnection:\x20close\
+SF:r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nContent-Length:\x202
+SF:32\r\n\r\n<!DOCTYPE\x20HTML\x20PUBLIC\x20\"-//W3C//DTD\x20HTML\x203\.2\
+SF:x20Final//EN\">\n<title>404\x20Not\x20Found</title>\n<h1>Not\x20Found</
+SF:h1>\n<p>The\x20requested\x20URL\x20was\x20not\x20found\x20on\x20the\x20
+SF:server\.\x20If\x20you\x20entered\x20the\x20URL\x20manually\x20please\x2
+SF:0check\x20your\x20spelling\x20and\x20try\x20again\.</p>\n");
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Failed to resolve "Nmap".
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue Apr 28 11:18:18 2026 -- 1 IP address (1 host up) scanned in 127.29 seconds
+
+────────────────────────────────────────────────────────────
+ SECTION 3: IDENTIFIED RISKS
+────────────────────────────────────────────────────────────
+[RISK] Port 80 — HTTP — Unencrypted web traffic
+Affected: 
+---
+[RISK] Port 21 — FTP — Unencrypted file transfer, credential sniffing risk
+Affected: 10.129.27.3
+---
+
+────────────────────────────────────────────────────────────
+ SECTION 4: MITIGATION RECOMMENDATIONS
+────────────────────────────────────────────────────────────
+General recommendations based on findings:
+
+  • Disable or firewall any unencrypted services (FTP, Telnet, rsh, rlogin)
+  • Replace unencrypted protocols with secure alternatives (SFTP, SSH)
+  • Ensure all database services (MySQL, MSSQL, MongoDB, Redis) require authentication
+    and are not exposed to the network unnecessarily
+  • Apply latest security patches for SMB, RDP, and Windows RPC services
+  • Review and harden SNMP community strings or disable SNMP if unused
+  • Audit NFS and Samba shares for unnecessary public access
+  • Consider placing all non-essential services behind a firewall or VPN
+  • Review TLS/SSL configurations on HTTPS services for weak ciphers
+
+────────────────────────────────────────────────────────────
+ SECTION 5: AI-POWERED ANALYSIS
+────────────────────────────────────────────────────────────
+============================================================
+  AI-POWERED SECURITY ANALYSIS
+  Generated by Claude (Anthropic)
+  Target: 10.129.27.3  |  Tue Apr 28 11:18:56 AM CDT 2026
+============================================================
+
+# Vulnerability Assessment Report
+
+**Target:** 10.129.27.3  
+**Assessment Date:** 2024  
+**Classification:** Confidential  
+
+---
+
+## 1. EXECUTIVE SUMMARY
+
+The target system at 10.129.27.3 presents a **moderate-to-high risk** security posture with three externally accessible services, two of which transmit data over unencrypted channels. The presence of an FTP server (vsftpd 3.0.3) and an HTTP web server (gunicorn) without TLS encryption creates significant opportunities for credential interception and man-in-the-middle attacks. While the SSH service employs modern encryption, the combination of cleartext protocols substantially increases the system's attack surface. Immediate remediation is recommended to address the unencrypted service exposure before these vectors are exploited by malicious actors.
+
+---
+
+## 2. DETAILED FINDINGS
+
+### 2.1 FTP Service — Port 21/TCP
+
+| Attribute | Details |
+|-----------|---------|
+| **Service** | vsftpd 3.0.3 |
+| **Protocol** | FTP (File Transfer Protocol) |
+| **Encryption** | None (Cleartext) |
+
+**Service Description:**  
+FTP is a legacy file transfer protocol used to upload and download files between client and server. vsftpd (Very Secure FTP Daemon) version 3.0.3 is currently running, which is a relatively current version without known critical vulnerabilities.
+
+**Security Risk:**  
+- All authentication credentials (usernames and passwords) are transmitted in cleartext
+- File contents transferred are fully readable via network sniffing
+- Anonymous login may be enabled (requires verification)
+- Potential for brute-force attacks against user accounts
+
+**Potential Impact:**  
+- Credential theft through passive network interception
+- Exposure of sensitive file contents during transfer
+- Lateral movement if captured credentials are reused on other services (SSH)
+- Data exfiltration or malicious file upload if write access is granted
+
+**Risk Rating:** 🟠 **HIGH**  
+*Justification: Unencrypted credential transmission combined with file transfer capabilities presents substantial risk for data exposure and credential compromise. CVSS Base Score estimate: 7.4*
+
+---
+
+### 2.2 HTTP Service — Port 80/TCP
+
+| Attribute | Details |
+|-----------|---------|
+| **Service** | gunicorn (Python WSGI HTTP Server) |
+| **Protocol** | HTTP (Unencrypted) |
+| **Encryption** | None (Cleartext) |
+
+**Service Description:**  
+Gunicorn is a Python WSGI HTTP server commonly used to serve Python web applications (Django, Flask, etc.). Its presence indicates a custom web application is running on this host.
+
+**Security Risk:**  
+- All HTTP traffic including session tokens and form data transmitted in cleartext
+- Potential web application vulnerabilities (OWASP Top 10)
+- No HTTPS enforcement exposes users to session hijacking
+- Web application framework may contain injection vulnerabilities
+- Server version disclosure aids attacker reconnaissance
+
+**Potential Impact:**  
+- Session hijacking and account takeover through cookie theft
+- Sensitive data exposure (PII, credentials, business data)
+- Web application exploitation (SQLi, XSS, RCE depending on application)
+- Complete server compromise if application vulnerabilities exist
+
+**Risk Rating:** 🟠 **HIGH**  
+*Justification: Web applications represent the most common attack vector, and lack of encryption compounds risk. Unknown application code requires further testing. CVSS Base Score estimate: 7.5*
+
+---
+
+### 2.3 SSH Service — Port 22/TCP
+
+| Attribute | Details |
+|-----------|---------|
+| **Service** | OpenSSH 8.2p1 Ubuntu 4ubuntu0.2 |
+| **Protocol** | SSH (Encrypted) |
+| **Operating System** | Ubuntu Linux |
+
+**Service Description:**  
+OpenSSH provides encrypted remote shell access for system administration. Version 8.2p1 is a reasonably current release with modern cryptographic defaults.
+
+**Security Risk:**  
+- Exposed to brute-force and password spraying attacks
+- Version disclosure enables targeted exploit research
+- If FTP credentials are captured, SSH password reuse is likely
+- Default configuration may allow password authentication
+
+**Potential Impact:**  
+- Full system compromise if credentials are obtained
+- Persistent backdoor access for attackers
+- Lateral movement to other network systems
+
+**Risk Rating:** 🟡 **MEDIUM**  
+*Justification: Service is encrypted and version is current; however, exposure enables brute-force attacks and credential reuse scenarios. CVSS Base Score estimate: 5.3*
+
+---
+
+## 3. ATTACK SURFACE ANALYSIS
+
+The target presents a **web-centric attack surface** with legacy protocol exposure. An attacker would prioritize targets in the following order:
+
+### Primary Attack Vector: HTTP/Web Application (Port 80)
+The gunicorn web server represents the highest-value target because:
+- Web applications frequently contain exploitable vulnerabilities
+- No authentication may be required for initial access
+- Potential for Remote Code Execution through application flaws
+- Directory traversal, SSTI (Server-Side Template Injection), and API vulnerabilities common in Python applications
+
+### Secondary Attack Vector: FTP Service (Port 21)
+Attackers would conduct:
+- Anonymous login testing (`anonymous:anonymous`)
+- Passive credential sniffing if positioned on the network
+- Brute-force attacks against common usernames
+- Exploration of accessible directories for sensitive data
+
+### Tertiary Attack Vector: SSH Credential Reuse
+Once FTP or web application credentials are obtained:
+- Immediate SSH authentication attempts with captured credentials
+- Password spray attacks using discovered usernames
+- Targeted brute-force against identified user accounts
+
+### Attack Chain Scenario
+```
+Network Sniff → Capture FTP Credentials → SSH Login → Root Privilege Escalation
+       OR
+Web App Enumeration → Exploit Vulnerability → Reverse Shell → Persistence
+```
+
+---
+
+## 4. REMEDIATION RECOMMENDATIONS
+
+### PRIORITY 1 — CRITICAL (Implement Immediately)
+
+| # | Finding | Remediation |
+|---|---------|-------------|
+| 1.1 | FTP Cleartext Protocol | **Migrate to SFTP/SCP** — Disable vsftpd and utilize SSH-based file transfer (already available on port 22). If FTP is required, implement FTPS with mandatory TLS encryption. |
+| 1.2 | HTTP Unencrypted | **Implement HTTPS** — Deploy TLS certificate (Let's Encrypt recommended), configure gunicorn behind nginx/Apache reverse proxy with TLS termination, enforce HSTS. |
+
+### PRIORITY 2 — HIGH (Implement Within 7 Days)
+
+| # | Finding | Remediation |
+|---|---------|-------------|
+| 2.1 | Web Application Security | Conduct comprehensive web application penetration test against the gunicorn application. Verify input validation, authentication mechanisms, and session management. |
+| 2.2 | FTP Anonymous Access | Verify anonymous login is disabled: `anonymous_enable=NO` in vsftpd.conf |
+| 2.3 | SSH Hardening | Disable password authentication, enforce key-based auth only: `PasswordAuthentication no` in sshd_config |
+
+### PRIORITY 3 — MEDIUM (Implement Within 30 Days)
+
+| # | Finding | Remediation |
+|---|---------|-------------|
+| 3.1 | Service Banner Disclosure | Configure services to minimize version information disclosure |
+| 3.2 | Brute-Force Protection | Implement fail2ban for SSH and FTP services; configure rate limiting on web application |
+| 3.3 | Network Segmentation | Restrict FTP and SSH access to authorized IP ranges via firewall rules |
+| 3.4 | Monitoring | Implement logging and alerting for authentication failures across all services |
+
+---
+
+## 5. CONCLUSION
+
+The assessed system at 10.129.27.3 exhibits a **moderate-to-high risk posture** primarily due to the exposure of unencrypted services (FTP and HTTP) alongside an SSH service that could be compromised through credential reuse. The presence of a Python-based web application warrants immediate further testing to identify application-layer vulnerabilities that automated scanning cannot detect.
+
+**Recommended Next Steps:**
+1. Conduct manual web application penetration testing against port 80
+2. Verify FTP anonymous access configuration
+3. Implement TLS encryption for all public-facing services
+4. Perform internal vulnerability assessment to identify privilege escal
+
+============================================================
+  END OF AI ANALYSIS
+============================================================
+
+────────────────────────────────────────────────────────────
+ SECTION 6: RAW SCAN FILES
+────────────────────────────────────────────────────────────
+  Raw XML scan data: ./reports/20260428_111605_10.129.27.3/raw_scan.xml
+  Service scan:      ./reports/20260428_111605_10.129.27.3/services.xml
+  Risk log:          ./reports/20260428_111605_10.129.27.3/risks.txt
+  AI analysis:       ./reports/20260428_111605_10.129.27.3/ai_analysis.txt
+
+============================================================
+  END OF REPORT
+============================================================
