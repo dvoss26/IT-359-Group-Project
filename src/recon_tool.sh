@@ -245,17 +245,17 @@ step1_host_discovery() {
 # ─── STEP 2: Port Scanning ─────────────────────────────────
 step2_port_scan() {
     echo -e "${BOLD}${CYAN}[STEP 2] Port Scanning${RESET}"
-    echo "[*] Running full TCP port scan (this may take a moment)..."
+    echo "[*] Running full TCP port scan (T4 timing, min-rate 5000)..."
 
     if [ "$SCAN_MODE" == "single" ]; then
         # -Pn skips host discovery, treats target as always up (needed for HTB)
-        nmap -sS -Pn -p- --open \
+        nmap -sS -Pn -p- --open -T4 --min-rate 5000 \
             -iL "$REPORT_DIR/live_hosts.txt" \
             -oX "$RAW_SCAN" \
             -oG "$REPORT_DIR/ports.gnmap" \
             2>/dev/null
     else
-        nmap -sS -p- --open \
+        nmap -sS -p- --open -T4 --min-rate 5000 \
             -iL "$REPORT_DIR/live_hosts.txt" \
             -oX "$RAW_SCAN" \
             -oG "$REPORT_DIR/ports.gnmap" \
