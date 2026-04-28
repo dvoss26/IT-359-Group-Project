@@ -54,7 +54,7 @@ This tool integrates with the **Anthropic Claude API** to generate professional 
 
 > ⚠️ **Important:** Only the **Anthropic Claude API** was tested and verified to work with this tool. Other AI providers (OpenAI, Gemini, Ollama, etc.) were not tested and are not supported in the current implementation. (This is a future add)
 
-> 💳 **API Key & Cost:** The Anthropic Claude API requires a **separate paid API key** from [console.anthropic.com](https://console.anthropic.com). This is **not** included with a Claude Pro subscription — the API and the Claude.ai web interface are billed separately. A minimum credit purchase of $5 is required to get started. Each scan costs a fraction of a cent in API usage, so $5 of credits will last for hundreds of scans.
+> 💳 **API Key & Cost:** The Anthropic Claude API requires a **separate paid API key** from [console.anthropic.com](https://console.anthropic.com). This is **not** included with a Claude Pro subscription — the API and the Claude.ai web interface are billed separately. A minimum credit purchase of $5 is required to get started. Each scan costs a few cents in API usage, so $5 of credits will last for hundreds of scans.
 
 To get an API key:
 1. Go to [console.anthropic.com](https://console.anthropic.com)
