@@ -1,73 +1,100 @@
-# Red Team Recon Tool — IT-359 Group Project
+# IT-359 Automated Network Reconnaissance & Vulnerability Assessment Tool
 
-**Authors:** Dylan Voss & Grant Gollinger
+> 🎥 **Video Presentation:** [INSERT YOUTUBE LINK HERE]
 
 ---
 
-## Live Demo
+## Team Members
 
-Add live demo YouTube link here:
+- **Dylan Voss**
+- **Grant Gollinger**
+
+**Course:** IT-359 — Illinois State University
 
 ---
 
 ## Project Overview
 
-This project is an automated network reconnaissance and vulnerability assessment tool designed to assist penetration testers in the early stages of an engagement. The tool automates common recon tasks — host discovery, port scanning, service enumeration, OS detection, UDP scanning, vulnerability scripting, and risk identification — then produces a structured report with targeted mitigations and optional AI-powered threat analysis.
+This project is an automated network reconnaissance and vulnerability assessment tool designed to assist in the early stages of a penetration test. The tool automates common reconnaissance tasks such as host discovery, port scanning, service enumeration, risk identification, and AI-powered security analysis, then presents the results in a structured and readable format.
 
----
-
-## Ethical Considerations
-
-This tool is strictly for **authorized security testing** on systems you own or have explicit written permission to test. No public, production, or unauthorized networks should be scanned.
-
-The tool does not perform exploitation. It is limited to reconnaissance and enumeration techniques used in the early phases of a penetration test.
-
-Unauthorized scanning may violate the Computer Fraud and Abuse Act (CFAA) and equivalent state/international laws.
+The goal of this project is to demonstrate how programming can be combined with penetration testing techniques to automate repetitive tasks, improve efficiency, and produce consistent security assessment results. Rather than relying solely on pre-built tools, this project focuses on scripting and automation to replicate a realistic penetration testing workflow.
 
 ---
 
 ## Features
 
-| Feature | Description |
-|---|---|
-| Host Discovery | Ping sweep for subnets; single-host mode with `-Pn` bypass for firewalled targets |
-| TCP Port Scanning | Full 65535-port SYN scan with T4 timing and min-rate 1000 for practical speed |
-| Service Enumeration | Version detection (`-sV`), default NSE scripts (`-sC`) |
-| OS Detection | OS fingerprinting via nmap `-O` flag |
-| UDP Scanning | Optional scan of 12 high-risk UDP ports (SNMP, DNS, TFTP, IKE, etc.) |
-| Vuln Script Scanning | Optional `--script vuln` scan with CVE extraction |
-| Risk Identification | Flags 33 known high-risk TCP ports with accurate host association |
-| Targeted Mitigations | Per-port remediation advice specific to what was actually found |
-| AI Threat Analysis | Claude-powered threat assessment with attack vectors and prioritized next steps |
-| Structured Reports | Timestamped output directory with XML, text, and report files |
+- 🔍 **Automatic host discovery** via ping sweep (subnet mode)
+- 🚫 **ICMP-bypass scanning** with `-Pn` for firewalled targets (single IP mode)
+- 🔎 **Full TCP port scan** across all 65,535 ports
+- ⚙️ **Service & version enumeration** using Nmap scripts (`-sV -sC`)
+- ⚠️ **Risk identification** — flags 30+ known risky ports with descriptions
+- 🤖 **AI-powered security analysis** — sends findings to Claude (Anthropic) for professional risk narrative and remediation recommendations
+- 📄 **Automated report generation** — timestamped, structured output files
 
 ---
 
-## Tools & Technologies
+## Dependencies
 
-- **Language:** Bash (requires Bash 4.0+ for associative arrays)
-- **Primary Scanner:** Nmap 7.80+
-- **AI Integration:** Anthropic Claude API (`claude-haiku-4-5-20251001`)
-- **Utilities:** grep, awk, sed, curl, jq (curl/jq required for AI mode only)
-- **OS:** Linux (Ubuntu 22.04/24.04, Kali Linux); macOS with caveats (no `-sS` without root, no OS detection)
+| Tool | Purpose | Install |
+|------|---------|---------|
+| `nmap` >= 7.80 | Core scanning engine | `sudo apt install nmap` |
+| `bash` >= 5.0 | Script interpreter | Pre-installed on Linux |
+| `curl` | API calls to Claude | `sudo apt install curl` |
+| `jq` | JSON parsing for API responses | `sudo apt install jq` |
+| `grep`, `awk`, `sed` | Text parsing utilities | Pre-installed on Linux |
+
+**Supported OS:** Ubuntu 22.04+, Ubuntu 24.04+, Kali Linux
+**Not supported:** Windows (use WSL2 or a Linux VM)
 
 ---
 
-## Installation
+## AI Integration Notes
+
+This tool integrates with the **Anthropic Claude API** to generate professional AI-powered security analysis after each scan.
+
+> ⚠️ **Important:** Only the **Anthropic Claude API** was tested and verified to work with this tool. Other AI providers (OpenAI, Gemini, Ollama, etc.) were not tested and are not supported in the current implementation.
+
+> 💳 **API Key & Cost:** The Anthropic Claude API requires a **separate paid API key** from [console.anthropic.com](https://console.anthropic.com). This is **not** included with a Claude Pro subscription — the API and the Claude.ai web interface are billed separately. A minimum credit purchase of $5 is required to get started. Each scan costs a fraction of a cent in API usage, so $5 of credits will last for hundreds of scans.
+
+To get an API key:
+1. Go to [console.anthropic.com](https://console.anthropic.com)
+2. Create an account and add billing credits (minimum $5)
+3. Navigate to API Keys and generate a new key
+4. Use the key with the `-k` flag or set the `ANTHROPIC_API_KEY` environment variable
+
+---
+
+## Setup & Installation
+
+### 1. Clone the Repository
 
 ```bash
-# Clone the repo
-git clone <repo-url>
-cd IT-359-Group-Project-main
+cd ~
+git clone https://github.com/dvoss26/IT-359-Group-Project.git
+cd IT-359-Group-Project/src
+```
 
-# Make the script executable
-chmod +x src/recon_tool.sh
+### 2. Install Dependencies
 
-# Verify nmap is installed
-nmap --version
+```bash
+sudo apt update && sudo apt install -y nmap curl jq
+```
 
-# (Optional) Install curl and jq for AI mode
-sudo apt install curl jq
+### 3. Set Your Anthropic API Key
+
+```bash
+# Set for current session only
+export ANTHROPIC_API_KEY=sk-ant-YOUR_KEY_HERE
+
+# Or add permanently to your shell profile
+echo 'export ANTHROPIC_API_KEY=sk-ant-YOUR_KEY_HERE' >> ~/.bashrc
+source ~/.bashrc
+```
+
+### 4. Make the Script Executable
+
+```bash
+chmod +x recon_tool.sh
 ```
 
 ---
@@ -75,112 +102,129 @@ sudo apt install curl jq
 ## Usage
 
 ```
-Usage: ./src/recon_tool.sh -t <target> [options]
-
-Required:
-  -t  Target IP address or subnet (e.g., 192.168.1.0/24 or 10.10.10.5)
+sudo -E ./recon_tool.sh -t <target> [-o <output_dir>] [-k <api_key>]
 
 Options:
-  -o  Output directory for reports (default: ./reports)
-  -u  Enable UDP scan on common high-risk ports
-  -v  Enable vulnerability script scanning (nmap --script vuln)
-  -a  Enable AI-powered threat analysis (requires ANTHROPIC_API_KEY)
-  -h  Show this help message
+  -t    Target IP address or subnet (required)
+  -o    Output directory for reports (default: ./reports)
+  -k    Anthropic API key (or use ANTHROPIC_API_KEY env variable)
+  -h    Show help
 ```
 
-### Basic scan (single host)
-```bash
-sudo ./src/recon_tool.sh -t 10.129.1.17
-```
-
-### Full scan with UDP, vuln scripts, and AI analysis
-```bash
-export ANTHROPIC_API_KEY=sk-ant-...
-sudo ./src/recon_tool.sh -t 10.10.10.5 -u -v -a
-```
-
-### Subnet sweep with custom output directory
-```bash
-sudo ./src/recon_tool.sh -t 192.168.1.0/24 -o /tmp/pentest-results
-```
-
-> **Note:** `sudo` is required for SYN scanning (`-sS`) and OS detection (`-O`). Running without root falls back to connect-based scanning and skips OS fingerprinting.
+> **Note:** `sudo` is required because the SYN scan (`-sS`) uses raw packets. The `-E` flag preserves your environment variables (including the API key) when using sudo.
 
 ---
 
-## AI Integration
+## Examples
 
-When run with `-a`, the tool sends your scan findings to the **Claude API** and receives a structured threat assessment covering:
-
-1. **Threat Summary** — Overall security posture of the target
-2. **Critical Findings** — Highest-severity risks with CVEs where applicable
-3. **Suggested Attack Vectors** — Specific next steps with tool names and commands
-4. **Prioritized Mitigations** — Remediation ordered by severity
-5. **Additional Recon** — Further enumeration tools and techniques to pursue
-
-Set your API key before running:
+### Scan a Local Subnet
+Performs a ping sweep to find live hosts, then scans all of them:
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-your-key-here
-sudo ./src/recon_tool.sh -t <target> -a
+sudo -E ./recon_tool.sh -t 192.168.1.0/24
 ```
 
-Get an API key at: https://console.anthropic.com
+### Scan a Single Host (e.g. Hack The Box)
+Skips ping discovery and scans directly — required for firewalled hosts:
+```bash
+sudo -E ./recon_tool.sh -t 10.129.27.3
+```
+
+### Pass API Key Inline
+```bash
+sudo ./recon_tool.sh -t 10.129.27.3 -k sk-ant-YOUR_KEY_HERE
+```
+
+### Custom Output Directory
+```bash
+sudo -E ./recon_tool.sh -t 10.129.27.3 -o ./my_reports
+```
+
+---
+
+## How It Works
+
+The tool runs through 6 sequential steps:
+
+| Step | Name | Description |
+|------|------|-------------|
+| 1 | Host Discovery | Ping sweep (subnet) or direct target with `-Pn` (single IP) |
+| 2 | Port Scanning | Full TCP scan across all 65,535 ports (`-sS -Pn -p- -T4`) |
+| 3 | Service Enumeration | Version detection and default script scan (`-sV -sC`) |
+| 4 | Risk Identification | Flags 30+ known risky ports with descriptions and affected hosts |
+| 5 | AI-Powered Analysis | Sends findings to Claude API for professional security narrative |
+| 6 | Report Generation | Compiles all findings into timestamped output files |
+
+---
+
+## Output Files
+
+Each scan creates a timestamped folder under `./reports/`:
+
+```
+reports/
+└── 20260428_111856_10.129.27.3/
+    ├── report.txt                  ← Main human-readable report
+    ├── ai_analysis.txt             ← AI-generated security analysis
+    ├── risks.txt                   ← Risk log
+    ├── live_hosts.txt              ← Discovered live hosts
+    ├── hosts_with_open_ports.txt   ← Hosts with open TCP ports
+    ├── raw_scan.xml                ← Raw Nmap XML output
+    ├── ports.gnmap                 ← Grepable port scan output
+    ├── services.xml                ← Service scan XML
+    └── services.txt                ← Service scan readable output
+```
+
+> ⚠️ The `reports/` directory is listed in `.gitignore` — scan results are not committed to the repository to avoid exposing sensitive target data.
+
+---
+
+## Sample Output
+
+Real output generated by this tool against an authorized Hack The Box target is available in the [`data/`](data/) folder:
+
+| File | Description |
+|------|-------------|
+| [`data/report.txt`](data/report.txt) | Full scan report |
+| [`data/ai_analysis.txt`](data/ai_analysis.txt) | AI-generated security analysis from Claude |
+| [`data/services.txt`](data/services.txt) | Raw Nmap service enumeration |
+| [`data/risks.txt`](data/risks.txt) | Identified high-risk ports |
+
+See [`data/Sample Output.md`](data/Sample%20Output.md) for full details on all sample output files.
+
+---
+
+## Repository Structure
+
+```
+IT-359-Group-Project/
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── src/
+│   └── recon_tool.sh           ← Main tool script
+├── data/
+│   ├── Sample Output.md        ← Index of sample output files
+│   ├── report.txt              ← Sample full report
+│   ├── ai_analysis.txt         ← Sample AI analysis
+│   ├── services.txt            ← Sample service scan
+│   ├── risks.txt               ← Sample risk log
+│   └── ...                     ← Other sample output files
+└── docs/
+    └── IT359_Group_Project_Report.pdf  ← Final written report
+```
+
+---
+
+## Ethical Considerations
+
+This tool is intended **only** for use on systems you own or have explicit written permission to test. All development and testing was performed on:
+- Personally owned Proxmox virtual machines running Ubuntu 22.04
+- Hack The Box challenge machines (authorized penetration testing platform)
+
+Unauthorized scanning of networks or systems is illegal and unethical. The authors accept no responsibility for misuse of this tool.
 
 ---
 
 ## Methodology
 
-1. **Host Discovery** — Identify live hosts via ping sweep (subnet) or assume alive (single host with `-Pn`)
-2. **Port Scanning** — Full TCP SYN scan across all 65535 ports with speed tuning; optional UDP scan on 12 high-risk ports
-3. **Service Enumeration** — Version detection, NSE default scripts, and OS fingerprinting on hosts with open ports
-4. **Vulnerability Scanning** *(optional)* — `nmap --script vuln` with CVE extraction
-5. **Risk Identification** — Flag risky ports against a 33-entry database; accurately map each risk to its affected host(s)
-6. **AI Analysis** *(optional)* — Send findings to Claude API for threat assessment and attack path recommendations
-7. **Report Generation** — Structured report with dynamic, per-port mitigations based on actual findings
-
----
-
-## Output Structure
-
-```
-reports/
-└── 20260416_142654_10.129.1.17/
-    ├── report.txt              ← Final structured report
-    ├── live_hosts.txt          ← Discovered hosts
-    ├── raw_scan.xml            ← Full TCP port scan (XML)
-    ├── ports.gnmap             ← TCP port scan (grepable)
-    ├── services.xml            ← Service enumeration (XML)
-    ├── services.txt            ← Service enumeration (human-readable)
-    ├── os_detection.txt        ← OS fingerprint summary
-    ├── risks.txt               ← Identified risk log
-    ├── risky_ports_found.txt   ← Port numbers that triggered risks
-    ├── udp_scan.txt            ← UDP scan results (if -u was used)
-    ├── udp_ports.gnmap         ← UDP scan grepable (if -u was used)
-    ├── vuln_scan.txt           ← Vuln script results (if -v was used)
-    ├── vuln_scan.xml           ← Vuln script results XML (if -v was used)
-    ├── cves_found.txt          ← Extracted CVEs (if -v was used)
-    └── ai_analysis.txt         ← Claude threat assessment (if -a was used)
-```
-
----
-
-## Project Execution Plan
-
-1. **Environment Setup** — Linux-based lab environment with Nmap and optional curl/jq
-2. **Script Development** — Bash automation script using getopts for argument parsing
-3. **Network Scanning** — Multi-phase scanning: host discovery → port scan → service enum → optional UDP/vuln
-4. **Result Parsing** — Awk state machine for accurate per-host risk mapping across multi-host scans
-5. **AI Integration** — Claude API integration with jq-based JSON construction for safe prompt embedding
-6. **Report Generation** — Dynamic mitigations generated from actual findings, not static boilerplate
-7. **Testing & Validation** — Tested on Hack The Box machines (Meow, etc.) in authorized lab environments
-8. **Documentation & Submission** — README, sample output, and final writeup
-
----
-
-## References
-
-- [Nmap Reference Guide](https://nmap.org/book/man.html)
-- [Anthropic Claude API](https://docs.anthropic.com/en/api/getting-started)
-- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
-- [NIST NVD (CVE Database)](https://nvd.nist.gov/)
-- [Hack The Box](https://www.hackthebox.com/) — Used for authorized testing
+The tool follows a standard penetration testing reconnaissance workflow covering host discovery, port scanning, service enumeration, risk identification, AI-powered analysis, and report generation. Full methodology details are available in the [final writeup](docs/IT359_Group_Project_Report.pdf).
