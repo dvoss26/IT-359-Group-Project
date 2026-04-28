@@ -52,7 +52,7 @@ The goal of this project is to demonstrate how programming can be combined with 
 
 This tool integrates with the **Anthropic Claude API** to generate professional AI-powered security analysis after each scan.
 
-> ⚠️ **Important:** Only the **Anthropic Claude API** was tested and verified to work with this tool. Other AI providers (OpenAI, Gemini, Ollama, etc.) were not tested and are not supported in the current implementation.
+> ⚠️ **Important:** Only the **Anthropic Claude API** was tested and verified to work with this tool. Other AI providers (OpenAI, Gemini, Ollama, etc.) were not tested and are not supported in the current implementation. (This is a future add)
 
 > 💳 **API Key & Cost:** The Anthropic Claude API requires a **separate paid API key** from [console.anthropic.com](https://console.anthropic.com). This is **not** included with a Claude Pro subscription — the API and the Claude.ai web interface are billed separately. A minimum credit purchase of $5 is required to get started. Each scan costs a fraction of a cent in API usage, so $5 of credits will last for hundreds of scans.
 
