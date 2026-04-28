@@ -16,6 +16,6 @@ authorized Hack The Box target (10.129.27.3) on April 28, 2026.
 | [`ports.gnmap`](ports.gnmap) | Grepable Nmap port scan output |
 
 ## Notes
-- Target was an authorized Hack The Box machine
+- Target was an authorized Hack The Box machine - Intro to Red Team - Cap Machine
 - All scanning performed within HTB's authorized testing environment
 - AI analysis generated automatically via Claude API (Anthropic)
