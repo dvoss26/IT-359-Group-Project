@@ -1,6 +1,6 @@
 # IT-359 Automated Network Reconnaissance & Vulnerability Assessment Tool
 
-> 🎥 **Video Presentation:** [INSERT YOUTUBE LINK HERE]
+> 🎥 **Video Presentation:** https://youtu.be/PCkAgNgiI8I?si=_scALtFRPoayHyhY
 
 ---
 
