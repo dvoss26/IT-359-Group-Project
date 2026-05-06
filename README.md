@@ -6,8 +6,8 @@
 
 ## Team Members
 
-- **Dylan Voss**
-- **Grant Gollinger**
+- **Dylan Voss - dvoss26**
+- **Grant Gollinger - grantgollinger**
 
 **Course:** IT-359 — Illinois State University
 
